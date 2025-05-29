@@ -1,18 +1,17 @@
-'use client';
-import HeroSection from '../components/HeroSection';
+import HeroSection from '@/components/HeroSection';
+import FeaturesSection from '@/components/FeaturesSection'; // ← Add this line
 
-export default function Home() {
+export default function ThankYouPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden">
-      <HeroSection
-        headline="Speak English Like a Pro"
-        subheadline="Fast-track your fluency with tailored tutoring"
-        ctaLabel="Start Your Free Trial"
-        onCtaClick={() => alert("Free Trial Booked")}
-        imageUrl="/hero.jpg" // ✅ this must match public/hero.jpg exactly
-        altText="Happy woman learning online"
-      />
-    </main>
+    <section className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-4xl font-bold text-blue-600 mb-4">Thank You!</h1>
+        <p className="text-gray-700 text-lg">
+          Your message has been sent. I’ll get back to you as soon as possible.
+        </p>
+      </div>
+    </section>
   );
 }
 
+}

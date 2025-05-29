@@ -1,7 +1,8 @@
-import type { NextConfig } from "next";
+const path = require('path')
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = {
+  webpack: (config) => {
+    config.resolve.alias['@schemas'] = path.resolve(__dirname, 'sanity/schemas/index.ts')
+    return config
+  }
+}
