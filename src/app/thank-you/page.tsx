@@ -1,7 +1,7 @@
 // src/app/thank-you/page.tsx
 'use client';
 
-import HeroSection from '@/components/HeroSection_TEMP';
+import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeatureCards';
 import FooterSection from '@/components/FooterSection';
 import Link from 'next/link';

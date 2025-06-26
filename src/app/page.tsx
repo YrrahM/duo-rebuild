@@ -1,7 +1,7 @@
 // Deployment trigger comment
 
 
-import HeroSection from '@/components/HeroSection_TEMP';
+import HeroSection from '@/components/HeroSection';
 
 
 export const metadata = {
