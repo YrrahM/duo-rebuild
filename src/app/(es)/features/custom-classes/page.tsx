@@ -1,9 +1,9 @@
-
-
+// src/app/(es)/features/custom-classes/page.tsx
 import Link from 'next/link';
 import MainLayout from '@/components/MainLayout';
-import JsonLdCustomClasses from '@/components/JsonLdCustomClasses';
-import JsonLdBreadcrumbCustomClasses from '@/components/JsonLdBreadcrumbCustomClasses';
+
+// ✅ These must only be used inside a client component
+import JsonLdClientOnly from './JsonLdClientOnly';
 
 export const metadata = {
   title: 'Clases Personalizadas | businessenglish.vip',
@@ -44,12 +44,10 @@ export const metadata = {
 
 export default function CustomClassesPage() {
   return (
-    
     <MainLayout>
-      <JsonLdBreadcrumbCustomClasses />
-      <JsonLdCustomClasses />
+      {/* ✅ Inject client-only structured data */}
+      <JsonLdClientOnly />
 
-      {/* Your page content follows below */}
       <div
         style={{
           minHeight: '100vh',
