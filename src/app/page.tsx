@@ -33,6 +33,7 @@ export const metadata = {
   },
   robots: 'index, follow',
 };
+// temp edit
 
 export default function HomePage() {
   return (
