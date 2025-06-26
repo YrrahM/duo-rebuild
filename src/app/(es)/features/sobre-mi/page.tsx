@@ -96,7 +96,10 @@ export default function SobreMiPage() {
               ← Volver
             </Link>
           </div>
+ // ...everything else unchanged above...
+
         </div>
       </div>
     </MainLayout>
   );
+} // ✅ This closing brace was missing
