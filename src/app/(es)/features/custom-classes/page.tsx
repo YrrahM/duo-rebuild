@@ -1,4 +1,4 @@
-'use client';
+
 
 import Link from 'next/link';
 import MainLayout from '@/components/MainLayout';
@@ -44,6 +44,7 @@ export const metadata = {
 
 export default function CustomClassesPage() {
   return (
+    
     <MainLayout>
       <JsonLdBreadcrumbCustomClasses />
       <JsonLdCustomClasses />

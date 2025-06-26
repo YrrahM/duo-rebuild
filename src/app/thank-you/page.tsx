@@ -2,7 +2,8 @@
 'use client';
 
 import HeroSection from '@/components/HeroSection';
-import FeaturesSection from '@/components/FeatureCards';
+import FeaturesSection from '@/components/FeatureSection';
+
 import Footer from '@/components/Footer';
 
 import Link from 'next/link';
