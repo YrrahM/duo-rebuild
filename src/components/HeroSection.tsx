@@ -1,58 +1,84 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { motion } from 'framer-motion'
+import React from 'react';
+import Image from 'next/image';
+import heroImg from '@/assets/hero-fixed.jpg';
+import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-      <Image
-        src="/hero.jpg"
-        alt="Professional English instruction"
-        layout="fill"
-        objectFit="cover"
-        priority
-        placeholder="blur"
-        blurDataURL="/blur-placeholder.jpg"
-        className="absolute inset-0 z-0"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
-
-      <motion.div
-        className="z-20 text-center px-6 md:px-12"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+    <header>
+      <section
+        id="home"
+        aria-label="Sección principal de introducción a clases de inglés personalizadas"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden text-white"
       >
-        <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          Expert Business English Coaching
-        </motion.h1>
+        {/* Background image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={heroImg}
+            alt="Clases de inglés online personalizadas para profesionales"
+            placeholder="blur"
+            fill
+            quality={90}
+            className="object-cover object-center animate-fade-in"
+          />
+        </div>
 
-        <motion.p
-          className="text-lg md:text-xl mb-8 max-w-3xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          Tailored one-on-one and group English training for professionals in law, aviation,
-          medicine, engineering, and more. Delivered online by a certified native speaker with 40+ years of experience.
-        </motion.p>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-0" />
 
-        <motion.a
-          href="#contact"
-          className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-xl transition duration-300"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9 }}
+        {/* Screen reader-only summary for accessibility */}
+        <span className="sr-only">
+          Aprende inglés online con clases personalizadas para profesionales. Mejora tu conversación,
+          vocabulario técnico y confianza con Harry Ernest.
+        </span>
+
+        {/* Hero content */}
+        <div
+          className="z-20 text-left animate-fade-in-delay-1"
+          style={{
+            paddingLeft: '1cm',
+            paddingRight: '1rem',
+            marginTop: '3.5cm',
+          }}
         >
-          Book a Free Trial Class
-        </motion.a>
-      </motion.div>
-    </section>
-  )
+          <h1
+            className="font-bold mb-4"
+            style={{
+              fontSize: '3rem',
+              lineHeight: '1.2',
+              color: '#ffffff',
+            }}
+          >
+            Aprende inglés con confianza
+          </h1>
+
+          <p
+            className="leading-relaxed mb-6"
+            style={{
+              fontSize: '1.5rem',
+              color: '#c1121f',
+              fontWeight: 'bold',
+            }}
+          >
+            Ofrezco cursos personalizados de inglés<br />
+            para profesionales hispanohablantes.
+          </p>
+
+          <Link
+            href="/features"
+            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
+            style={{
+              backgroundColor: '#2563eb',
+              color: 'white',
+              textDecoration: 'none',
+            }}
+          >
+            Más información
+          </Link>
+        </div>
+      </section>
+    </header>
+  );
 }
