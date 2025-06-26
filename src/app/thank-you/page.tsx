@@ -3,7 +3,8 @@
 
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeatureCards';
-import FooterSection from '@/components/FooterSection';
+import Footer from '@/components/Footer';
+
 import Link from 'next/link';
 
 export default function ThankYouPage() {
@@ -18,7 +19,7 @@ export default function ThankYouPage() {
           </button>
         </Link>
       </div>
-      <FooterSection />
+      <Footer />
     </>
   );
 }
