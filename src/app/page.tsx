@@ -1,8 +1,6 @@
-// Deployment trigger comment
-
-
 import HeroSection from '@/components/HeroSection';
-
+import Footer from '@/components/Footer'; // ✅ Add this import
+import MainLayout from '@/components/MainLayout'; // ✅ Use your consistent layout
 
 export const metadata = {
   title: 'Clases de Inglés para Profesionales | businessenglish.vip',
@@ -37,13 +35,12 @@ export const metadata = {
   },
   robots: 'index, follow',
 };
-// temp edit
 
 export default function HomePage() {
   return (
-    <main>
+    <MainLayout>
       <HeroSection />
-      {/* You can add FeatureSection, TestimonialsSection, etc. here */}
-    </main>
+      <Footer />
+    </MainLayout>
   );
 }
