@@ -3,18 +3,17 @@
 import React from 'react';
 import Script from 'next/script';
 
-export default function JsonLdBreadcrumbBusinessEnglish() {
+export default function JsonLdBusinessEnglish() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       {
-  "@type": "ListItem",
-  "position": 1,
-  "name": "Características",
-  "item": "https://businessenglish.vip/features"
-}
-
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Características',
+        item: 'https://businessenglish.vip/features',
+      },
       {
         '@type': 'ListItem',
         position: 2,
@@ -26,7 +25,7 @@ export default function JsonLdBreadcrumbBusinessEnglish() {
 
   return (
     <Script
-      id="jsonld-breadcrumb-business-english"
+      id="jsonld-business-english"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
