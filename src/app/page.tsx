@@ -1,4 +1,5 @@
-import HeroSection from '@/components/HeroSectionFixed';
+import HeroSection from '@/components/HeroSection';
+
 
 export const metadata = {
   title: 'Clases de Inglés para Profesionales | businessenglish.vip',
