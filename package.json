@@ -2,6 +2,7 @@
   "name": "duo-rebuild",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,27 +10,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/image-url": "^1.1.0",
+    "@formspree/react": "^3.0.0",
     "aos": "^2.3.4",
-    "framer-motion": "^12.15.0",
-    "next": "15.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sanity": "^3.90.0",
+    "framer-motion": "^12.18.1",
+    "lucide-react": "^0.511.0",
+    "next": "^15.3.3",
+    "next-intl": "^4.1.0",
+    "nodemailer": "^7.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.7",
-    "@tailwindcss/postcss7-compat": "^2.2.17",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.40",
+    "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.0.0",
     "eslint-config-next": "15.3.2",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.7",
-    "typescript": "^5"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.4.5"
   }
 }

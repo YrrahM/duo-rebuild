@@ -1,14 +1,14 @@
-// Deployment trigger comment
-
-
+import MainLayout from '@/components/MainLayout';
 import HeroSection from '@/components/HeroSection_TEMP';
-
 
 export const metadata = {
   title: 'Clases de Inglés para Profesionales | businessenglish.vip',
   description:
     'Aprende inglés con un profesor con experiencia internacional. Clases personalizadas para profesionales hispanohablantes que quieren destacar en su carrera.',
-  openGraph: {
+  alternates: {
+    canonical: 'https://businessenglish.vip/features',
+  },
+    openGraph: {
     title: 'Clases de Inglés para Profesionales | businessenglish.vip',
     description:
       'Inglés personalizado para profesionales: conversación, negocios, entrevistas y más. Mejora tu confianza y oportunidades.',
@@ -32,18 +32,13 @@ export const metadata = {
       'Cursos de inglés diseñados para ejecutivos y profesionales que buscan avanzar en su carrera.',
     images: ['https://businessenglish.vip/og/home.png'],
   },
-  alternates: {
-    canonical: 'https://businessenglish.vip',
-  },
   robots: 'index, follow',
 };
-// temp edit
 
 export default function HomePage() {
   return (
-    <main>
+    <MainLayout>
       <HeroSection />
-      {/* You can add FeatureSection, TestimonialsSection, etc. here */}
-    </main>
+    </MainLayout>
   );
 }
