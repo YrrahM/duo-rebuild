@@ -1,11 +1,13 @@
+import MainLayout from '@/components/MainLayout';
 import HeroSection from '@/components/HeroSection';
-import Footer from '@/components/Footer'; // ✅ Add this import
-import MainLayout from '@/components/MainLayout'; // ✅ Use your consistent layout
 
 export const metadata = {
   title: 'Clases de Inglés para Profesionales | businessenglish.vip',
   description:
     'Aprende inglés con un profesor con experiencia internacional. Clases personalizadas para profesionales hispanohablantes que quieren destacar en su carrera.',
+  alternates: {
+    canonical: 'https://businessenglish.vip',
+  },
   openGraph: {
     title: 'Clases de Inglés para Profesionales | businessenglish.vip',
     description:
@@ -30,9 +32,6 @@ export const metadata = {
       'Cursos de inglés diseñados para ejecutivos y profesionales que buscan avanzar en su carrera.',
     images: ['https://businessenglish.vip/og/home.png'],
   },
-  alternates: {
-    canonical: 'https://businessenglish.vip',
-  },
   robots: 'index, follow',
 };
 
@@ -40,7 +39,6 @@ export default function HomePage() {
   return (
     <MainLayout>
       <HeroSection />
-      <Footer />
     </MainLayout>
   );
 }

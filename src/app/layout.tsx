@@ -1,5 +1,5 @@
+// src/app/layout.tsx
 import './globals.css';
-import Footer from '@/components/Footer'; // ✅ Add this line
 
 export const metadata = {
   title: 'Tu Sitio',
@@ -9,12 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>
-        {children}
-
-        {/* ✅ Global footer appears below all content */}
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

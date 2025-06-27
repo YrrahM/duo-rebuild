@@ -21,7 +21,8 @@ export default function HeroSection() {
             placeholder="blur"
             fill
             quality={90}
-            className="object-cover object-center animate-fade-in"
+            className="object-cover object-center"
+
           />
         </div>
 
@@ -36,7 +37,9 @@ export default function HeroSection() {
 
         {/* Hero content */}
         <div
-          className="z-20 text-left animate-fade-in-delay-1"
+          
+  className="z-30 text-left animate-fade-in-delay-1"
+
           style={{
             paddingLeft: '1cm',
             paddingRight: '1rem',

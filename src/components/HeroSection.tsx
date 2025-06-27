@@ -21,14 +21,15 @@ export default function HeroSection() {
             placeholder="blur"
             fill
             quality={90}
-            className="object-cover object-center animate-fade-in"
+            priority
+            className="object-cover object-center"
           />
         </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 z-0" />
 
-        {/* Screen reader-only summary for accessibility */}
+        {/* Screen reader-only summary */}
         <span className="sr-only">
           Aprende inglés online con clases personalizadas para profesionales. Mejora tu conversación,
           vocabulario técnico y confianza con Harry Ernest.
@@ -36,30 +37,33 @@ export default function HeroSection() {
 
         {/* Hero content */}
         <div
-          className="z-20 text-left animate-fade-in-delay-1"
+          className="z-20 text-left opacity-0"
           style={{
             paddingLeft: '1cm',
             paddingRight: '1rem',
             marginTop: '3.5cm',
+            animation: 'fade-in 0.8s ease-out 0.2s forwards',
           }}
         >
           <h1
-            className="font-bold mb-4"
+            className="font-bold mb-4 opacity-0"
             style={{
               fontSize: '3rem',
               lineHeight: '1.2',
               color: '#ffffff',
+              animation: 'fade-in 1s ease-out 0.4s forwards',
             }}
           >
             Aprende inglés con confianza
           </h1>
 
           <p
-            className="leading-relaxed mb-6"
+            className="leading-relaxed mb-6 opacity-0"
             style={{
               fontSize: '1.5rem',
               color: '#c1121f',
               fontWeight: 'bold',
+              animation: 'fade-in 1s ease-out 0.8s forwards',
             }}
           >
             Ofrezco cursos personalizados de inglés<br />
@@ -68,11 +72,12 @@ export default function HeroSection() {
 
           <Link
             href="/features"
-            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
+            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6 opacity-0"
             style={{
               backgroundColor: '#2563eb',
               color: 'white',
               textDecoration: 'none',
+              animation: 'fade-in 1s ease-out 1.2s forwards',
             }}
           >
             Más información
