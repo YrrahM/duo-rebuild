@@ -5,7 +5,7 @@ import Image from 'next/image';
 import heroImg from '@/assets/hero-fixed.jpg';
 import Link from 'next/link';
 
-export default function HeroSection() {
+export default function HomePage() {
   return (
     <header>
       <section
@@ -21,49 +21,45 @@ export default function HeroSection() {
             placeholder="blur"
             fill
             quality={90}
-            priority
-            className="object-cover object-center"
+            className="object-cover object-center animate-fade-in"
           />
         </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 z-0" />
 
-        {/* Screen reader-only summary */}
+        {/* Hidden screen reader text */}
         <span className="sr-only">
           Aprende inglés online con clases personalizadas para profesionales. Mejora tu conversación,
-          vocabulario técnico y confianza con Harry Ernest.
+          vocabulario técnico y confianza con Harry Michael Ernest.
         </span>
 
         {/* Hero content */}
         <div
-          className="z-20 text-left opacity-0"
+          className="z-30 text-left animate-fade-in-delay-1"
           style={{
             paddingLeft: '1cm',
             paddingRight: '1rem',
             marginTop: '3.5cm',
-            animation: 'fade-in 0.8s ease-out 0.2s forwards',
           }}
         >
           <h1
-            className="font-bold mb-4 opacity-0"
+            className="font-bold mb-4"
             style={{
               fontSize: '3rem',
               lineHeight: '1.2',
               color: '#ffffff',
-              animation: 'fade-in 1s ease-out 0.4s forwards',
             }}
           >
             Aprende inglés con confianza
           </h1>
 
           <p
-            className="leading-relaxed mb-6 opacity-0"
+            className="leading-relaxed mb-6"
             style={{
               fontSize: '1.5rem',
               color: '#c1121f',
               fontWeight: 'bold',
-              animation: 'fade-in 1s ease-out 0.8s forwards',
             }}
           >
             Ofrezco cursos personalizados de inglés<br />
@@ -72,12 +68,11 @@ export default function HeroSection() {
 
           <Link
             href="/features"
-            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6 opacity-0"
+            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
             style={{
               backgroundColor: '#2563eb',
               color: 'white',
               textDecoration: 'none',
-              animation: 'fade-in 1s ease-out 1.2s forwards',
             }}
           >
             Más información
