@@ -1,4 +1,5 @@
 // File: /src/app/(es)/features/thank-you/page.tsx
+import React, { Suspense } from 'react';
 import ThankYouClient from './ThankYouClient';
 
 export const metadata = {
@@ -29,5 +30,9 @@ export const metadata = {
 };
 
 export default function ThankYouPage() {
-  return <ThankYouClient />;
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ThankYouClient />
+    </Suspense>
+  );
 }

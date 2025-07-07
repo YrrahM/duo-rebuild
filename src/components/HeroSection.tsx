@@ -5,7 +5,11 @@ import Image from 'next/image';
 import heroImg from '@/assets/hero-fixed.jpg';
 import Link from 'next/link';
 
-export default function HomePage() {
+interface HeroSectionProps {
+  onImageLoad?: () => void;
+}
+
+export default function HeroSection({ onImageLoad }: HeroSectionProps) {
   return (
     <header>
       <section
@@ -16,13 +20,13 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0 -z-10">
           <Image
-  src={heroImg}
-  alt="Clases de inglés online personalizadas para profesionales hispanohablantes con un profesor experto"
-
+            src={heroImg}
+            alt="Clases de inglés online personalizadas para profesionales hispanohablantes con un profesor experto"
             placeholder="blur"
             fill
             quality={90}
             className="object-cover object-center animate-fade-in"
+            onLoad={onImageLoad}
           />
         </div>
 
