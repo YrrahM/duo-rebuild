@@ -32,10 +32,11 @@ const itemVariants = {
     x: 0,
     transition: {
       duration: 0.3,
-      ease: [0.42, 0, 0.58, 1], // ✅ This is the Framer Motion-compatible form
+      ease: 'easeInOut', // ✅ Fixed here
     },
   },
 };
+
 
 
 
