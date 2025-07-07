@@ -5,22 +5,28 @@ import Script from 'next/script';
 
 export default function JsonLdBreadcrumbSobreMi() {
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
-        name: 'Características',
-        item: 'https://businessenglish.vip/features',
+        name: "Inicio",
+        item: "https://businessenglish.vip"
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
-        name: 'Sobre mí',
-        item: 'https://businessenglish.vip/features/sobre-mi',
+        name: "Características",
+        item: "https://businessenglish.vip/features"
       },
-    ],
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Sobre mí",
+        item: "https://businessenglish.vip/features/sobre-mi"
+      }
+    ]
   };
 
   return (

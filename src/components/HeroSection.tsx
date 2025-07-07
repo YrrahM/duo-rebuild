@@ -16,8 +16,9 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src={heroImg}
-            alt="Clases de inglés online personalizadas para profesionales"
+  src={heroImg}
+  alt="Clases de inglés online personalizadas para profesionales hispanohablantes con un profesor experto"
+
             placeholder="blur"
             fill
             quality={90}

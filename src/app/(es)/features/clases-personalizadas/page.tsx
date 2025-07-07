@@ -1,40 +1,15 @@
+'use client';
+
 import MainLayout from '@/components/MainLayout';
 import Link from 'next/link';
-
-export const metadata = {
-  title: 'Clases Personalizadas | businessenglish.vip',
-  description:
-    'Clases de inglés personalizadas para todos los niveles y profesiones. Aprende a tu ritmo con un enfoque adaptado a tus necesidades.',
-  openGraph: {
-    title: 'Clases Personalizadas | businessenglish.vip',
-    description:
-      'Ofrezco clases de inglés personalizadas según tu profesión, intereses y nivel. Perfecto para avanzar de forma rápida y efectiva.',
-    url: 'https://businessenglish.vip/features/clases-personalizadas',
-    siteName: 'businessenglish.vip',
-    images: [
-      {
-        url: 'https://businessenglish.vip/og/custom.png',
-        width: 1200,
-        height: 630,
-        alt: 'Clase personalizada de inglés para profesionales',
-      },
-    ],
-    locale: 'es_MX',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Clases Personalizadas | businessenglish.vip',
-    description:
-      'Cursos adaptados a tu ritmo, profesión y nivel. Aprende inglés con confianza.',
-    images: ['https://businessenglish.vip/og/custom.png'],
-  },
-  robots: 'index, follow',
-};
+import JsonLdBreadcrumbCustomClasses from '@/components/JsonLdBreadcrumbCustomClasses';
 
 export default function ClasesPersonalizadasPage() {
   return (
     <MainLayout>
+      {/* ✅ Inject breadcrumb structured data */}
+      <JsonLdBreadcrumbCustomClasses />
+
       <div
         className="animate-fade-in"
         style={{
@@ -69,10 +44,13 @@ export default function ClasesPersonalizadasPage() {
           comenzando desde cero, planificamos juntos un programa eficaz para ti.
         </p>
 
-        {/* ✅ CTA Container */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
           <Link
-            href="/features/contactame"
+            href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+            title="Agendar una clase personalizada de inglés con Harry Michael Ernest"
             style={{
               display: 'inline-block',
               backgroundColor: '#2563eb',
@@ -86,6 +64,7 @@ export default function ClasesPersonalizadasPage() {
           >
             Agendar una Clase Gratis
           </Link>
+
           <Link
             href="/features"
             style={{
@@ -97,6 +76,15 @@ export default function ClasesPersonalizadasPage() {
               borderRadius: '0.5rem',
               textDecoration: 'none',
               fontSize: '1rem',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#2563eb';
             }}
           >
             ← Volver

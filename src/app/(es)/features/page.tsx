@@ -69,51 +69,61 @@ export default function FeaturesPage() {
           }}
         >
           <Link
-            href="/features/contactame"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#2563eb',
-              color: 'white',
-              fontWeight: 'bold',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '0.75rem',
-              textDecoration: 'none',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#1e40af';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#2563eb';
-            }}
-          >
-            Agendar una Clase Gratis
-          </Link>
+  href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+  title="Agendar una clase gratuita de inglés profesional con Harry Michael Ernest"
+  style={{
+    display: 'inline-block',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+    border: '2px solid #2563eb',
+    borderRadius: '0.75rem',
+    padding: '0.5rem 1rem',
+    transition: 'all 0.3s ease',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.backgroundColor = '#1d4ed8';
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.backgroundColor = '#2563eb';
+  }}
+>
+  Agendar una Clase Gratis
+</Link>
 
-          <Link
-            href="/"
-            style={{
-              display: 'inline-block',
-              color: '#2563eb',
-              fontWeight: 'bold',
-              textDecoration: 'none',
-              fontSize: '1.1rem',
-              border: '2px solid #2563eb',
-              borderRadius: '0.75rem',
-              padding: '0.5rem 1rem',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#2563eb';
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#2563eb';
-            }}
-          >
-            ← Volver
-          </Link>
+
+
+
+<Link
+  href="/"
+  style={{
+    display: 'inline-block',
+    color: '#2563eb',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+    border: '2px solid #2563eb',
+    borderRadius: '0.75rem',
+    padding: '0.5rem 1rem',
+    transition: 'all 0.3s ease',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.backgroundColor = '#2563eb';
+    e.currentTarget.style.color = 'white';
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.backgroundColor = 'transparent';
+    e.currentTarget.style.color = '#2563eb';
+  }}
+>
+  ← Volver
+</Link>
+
         </div>
       </div>
     </MainLayout>

@@ -2,10 +2,14 @@
 
 import MainLayout from '@/components/MainLayout';
 import Link from 'next/link';
+import JsonLdBreadcrumbBusinessEnglish from '@/components/JsonLdBreadcrumbBusinessEnglish';
 
 export default function BusinessEnglishPage() {
   return (
     <MainLayout>
+      {/* ✅ Inject structured breadcrumb for SEO */}
+      <JsonLdBreadcrumbBusinessEnglish />
+
       <div
         className="animate-fade-in"
         style={{
@@ -50,20 +54,27 @@ export default function BusinessEnglishPage() {
             gap: '1rem',
           }}
         >
+          {/* Updated Google Appointment Link */}
           <Link
-            href="/contacto"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#2563eb',
-              color: 'white',
-              fontWeight: 'bold',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '0.5rem',
-              textDecoration: 'none',
-            }}
-          >
-            Agendar una Clase Gratis
-          </Link>
+  href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+  title="Agendar una clase gratuita de inglés de negocios con Harry Michael Ernest"
+  style={{
+    display: 'inline-block',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    fontWeight: 'bold',
+    padding: '0.75rem 1.5rem',
+    borderRadius: '0.5rem',
+    textDecoration: 'none',
+    fontSize: '1rem',
+  }}
+>
+  Agendar una Clase Gratis
+</Link>
+
 
           <Link
             href="/features"
@@ -75,6 +86,16 @@ export default function BusinessEnglishPage() {
               borderRadius: '0.5rem',
               padding: '0.75rem 1.5rem',
               textDecoration: 'none',
+              fontSize: '1rem',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#2563eb';
             }}
           >
             ← Volver

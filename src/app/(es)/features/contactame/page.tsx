@@ -3,10 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import JsonLdBreadcrumbContactame from '@/components/JsonLdBreadcrumbContactame';
 
 export default function ContactamePage() {
   return (
     <>
+      <JsonLdBreadcrumbContactame />
+
       <div
         className="animate-fade-in"
         style={{
@@ -27,7 +30,6 @@ export default function ContactamePage() {
           ¿Tienes preguntas? ¿Quieres agendar una clase? Escríbeme aquí.
         </p>
 
-        {/* Contact Form */}
         <form
           style={{
             backgroundColor: '#fff',
@@ -99,15 +101,31 @@ export default function ContactamePage() {
           }}
         >
           <Link
-            href="/contacto"
+            href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+            title="Agendar una clase gratuita de inglés profesional con Harry Michael Ernest"
             style={{
-              color: '#2563eb',
-              fontWeight: 600,
-              textDecoration: 'underline',
+              display: 'inline-block',
+              backgroundColor: '#2563eb',
+              color: 'white',
+              fontWeight: 'bold',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.75rem',
+              textDecoration: 'none',
+              transition: 'background-color 0.3s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#1d4ed8';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
             }}
           >
             Agendar una Clase Gratis
           </Link>
+
           <Link
             href="/features"
             style={{
@@ -121,7 +139,6 @@ export default function ContactamePage() {
         </div>
       </div>
 
-      {/* Footer */}
       <div style={{ backgroundColor: '#1f2937', paddingTop: '1rem' }}>
         <Footer />
       </div>

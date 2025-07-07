@@ -3,7 +3,7 @@
 import React from 'react';
 import Script from 'next/script';
 
-export default function JsonLdBreadcrumbCustomClasses() {
+export default function JsonLdBreadcrumbTestimonias() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -23,15 +23,15 @@ export default function JsonLdBreadcrumbCustomClasses() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "Clases Personalizadas",
-        item: "https://businessenglish.vip/features/custom-classes"
+        name: "Testimonias",
+        item: "https://businessenglish.vip/features/testimonias"
       }
     ]
   };
 
   return (
     <Script
-      id="jsonld-breadcrumb-custom-classes"
+      id="jsonld-breadcrumb-testimonias"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />

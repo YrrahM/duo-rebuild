@@ -1,14 +1,17 @@
- 
 'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '@/components/MainLayout';
+import JsonLdBreadcrumbSobreMi from '@/components/JsonLdBreadcrumbSobreMi';
 
 export default function SobreMiPage() {
   return (
     <MainLayout>
+      {/* ✅ Inject structured data for breadcrumbs */}
+      <JsonLdBreadcrumbSobreMi />
+
       <div
         className="animate-fade-in"
         style={{
@@ -50,10 +53,7 @@ export default function SobreMiPage() {
             lineHeight: '1.75rem',
           }}
         >
-          Soy un profesor de inglés con más de 40 años de experiencia internacional. He trabajado con
-          profesionales de múltiples industrias, incluyendo ingeniería, medicina, aviación y derecho. Mi
-          enfoque está en clases personalizadas que combinan conversación natural con objetivos reales del
-          estudiante. Mi meta es ayudarte a comunicarte con confianza en tu entorno profesional.
+          Soy un profesor de inglés con más de 40 años de experiencia internacional...
         </p>
 
         {/* Image Grid */}
@@ -69,17 +69,17 @@ export default function SobreMiPage() {
           }}
         >
           {[
-            'student.png',
-            'awacs.png',
-            'doctor.png',
-            'businessman.png',
-            'engineer.png',
-            'child.png',
-          ].map((img, index) => (
+            { src: 'student.png', alt: 'Profesor ayudando a un estudiante universitario en línea' },
+            { src: 'awacs.png', alt: 'Instrucción de inglés para personal de aviación militar AWACS' },
+            { src: 'doctor.png', alt: 'Clases de inglés especializadas para médicos y personal sanitario' },
+            { src: 'businessman.png', alt: 'Entrenamiento en inglés para ejecutivos y profesionales de negocios' },
+            { src: 'engineer.png', alt: 'Clases de inglés técnico para ingenieros y desarrolladores' },
+            { src: 'child.png', alt: 'Profesor enseñando inglés a un niño' },
+          ].map(({ src, alt }, index) => (
             <Image
               key={index}
-              src={`/logos/${img}`}
-              alt={img.replace('.png', '')}
+              src={`/logos/${src}`}
+              alt={alt}
               width={100}
               height={100}
               style={{ borderRadius: '1rem' }}
@@ -88,28 +88,40 @@ export default function SobreMiPage() {
         </div>
 
         {/* CTA Container */}
-        <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center', gap: '1rem' }}>
+        <div
+          style={{
+            marginTop: '2.5rem',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem',
+          }}
+        >
           <Link
-            href="/contacto"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#2563eb',
-              color: 'white',
-              fontWeight: 'bold',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '0.75rem',
-              textDecoration: 'none',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#1d4ed8';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#2563eb';
-            }}
-          >
-            Agendar una Clase Gratis
-          </Link>
+  href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+  title="Agendar una clase de inglés profesional con Harry Michael Ernest"
+  style={{
+    display: 'inline-block',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    fontWeight: 'bold',
+    padding: '0.75rem 1.5rem',
+    borderRadius: '0.75rem',
+    textDecoration: 'none',
+    transition: 'background-color 0.3s ease',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.backgroundColor = '#1d4ed8';
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.backgroundColor = '#2563eb';
+  }}
+>
+  Agendar una Clase Gratis
+</Link>
+
 
           <Link
             href="/features"

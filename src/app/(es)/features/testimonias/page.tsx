@@ -4,16 +4,20 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import JsonLdBreadcrumbTestimonias from '@/components/JsonLdBreadcrumbTestimonias';
 
 export default function TestimoniasPage() {
   return (
     <>
+      {/* ✅ Inject structured breadcrumb for SEO */}
+      <JsonLdBreadcrumbTestimonias />
+
       <div
         className="animate-fade-in"
         style={{
           minHeight: '100vh',
           background: 'linear-gradient(to bottom, #bfdbfe, #ffffff, #e5e7eb)',
-          padding: '2rem 1rem 400px', // Extra bottom padding for footer
+          padding: '2rem 1rem 400px',
           fontFamily: 'sans-serif',
         }}
       >
@@ -54,10 +58,10 @@ export default function TestimoniasPage() {
           >
             <Image
               src="/logos/quezada.jpg"
-              alt="Logo of Javier Quezada Abogado"
-              width={60}
-              height={80}
-              className="rounded-md object-contain"
+              alt="Logotipo de Quezada Abogados, cliente satisfecho de clases de inglés jurídico"
+              width={80}
+              height={100}
+              style={{ objectFit: 'contain', borderRadius: '0.5rem' }}
             />
             <div>
               <p style={{ color: '#374151', fontSize: '1rem', marginBottom: '0.5rem', textAlign: 'justify' }}>
@@ -84,10 +88,10 @@ export default function TestimoniasPage() {
           >
             <Image
               src="/logos/bechtel.jpeg"
-              alt="Logo de Bechtel"
-              width={80}
-              height={80}
-              style={{ borderRadius: '0.5rem', flexShrink: 0 }}
+              alt="Logotipo de Bechtel Corporation, empresa con personal capacitado en inglés técnico"
+              width={100}
+              height={60}
+              style={{ objectFit: 'contain', borderRadius: '0.5rem' }}
             />
             <div>
               <p style={{ color: '#374151', fontSize: '1rem', marginBottom: '0.5rem', textAlign: 'justify' }}>
@@ -110,20 +114,31 @@ export default function TestimoniasPage() {
           }}
         >
           <Link
-            href="/contacto"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#2563eb',
-              color: 'white',
-              fontWeight: 600,
-              padding: '0.75rem 1.5rem',
-              borderRadius: '0.75rem',
-              textDecoration: 'none',
-              textAlign: 'center',
-            }}
-          >
-            Agendar una Clase Gratis
-          </Link>
+  href="https://calendar.app.google/M3DnLoa1754P9qdHA"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Reserva tu clase gratis con Harry Michael Ernest"
+  title="Agendar una clase de inglés con el profesor recomendado por estudiantes satisfechos"
+  style={{
+    display: 'inline-block',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    fontWeight: 'bold',
+    padding: '0.75rem 1.5rem',
+    borderRadius: '0.75rem',
+    textDecoration: 'none',
+    transition: 'background-color 0.3s ease',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.backgroundColor = '#1d4ed8';
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.backgroundColor = '#2563eb';
+  }}
+>
+  Agendar una Clase Gratis
+</Link>
+
 
           <Link
             href="/features"
@@ -136,6 +151,15 @@ export default function TestimoniasPage() {
               borderRadius: '0.75rem',
               textDecoration: 'none',
               textAlign: 'center',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#2563eb';
             }}
           >
             ← Volver
