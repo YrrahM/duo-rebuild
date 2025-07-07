@@ -37,7 +37,7 @@ const itemVariants = {
   },
 };
 
-};
+
 
 export default function Header() {
   const [active, setActive] = useState('home');
