@@ -63,6 +63,42 @@ export default function Footer() {
             Aviso Legal
           </Link>
         </div>
+
+        {/* ✅ Social Media Links */}
+        <div style={{ marginTop: '1.5rem' }}>
+          <a
+            href="https://www.linkedin.com/in/your-profile" // 🔁 Replace with actual LinkedIn
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginRight: '1.5rem', color: '#d1d5db', textDecoration: 'none' }}
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://www.facebook.com/your-page" // 🔁 Replace with actual Facebook
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginRight: '1.5rem', color: '#d1d5db', textDecoration: 'none' }}
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/your-profile" // 🔁 Replace with actual Instagram
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginRight: '1.5rem', color: '#d1d5db', textDecoration: 'none' }}
+          >
+            Instagram
+          </a>
+          <a
+            href="https://x.com/your-handle" // ✅ X (Twitter) link
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#d1d5db', textDecoration: 'none' }}
+          >
+            X
+          </a>
+        </div>
       </div>
     </footer>
   );
