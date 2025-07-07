@@ -1,5 +1,5 @@
 // File: /src/app/(es)/features/thank-you/page.tsx
-import ThankYouClient from './ThankYouClient.tsx';
+import ThankYouClient from './ThankYouClient';
 
 export const metadata = {
   title: 'Gracias por tu mensaje | businessenglish.vip',
