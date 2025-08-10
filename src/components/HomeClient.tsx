@@ -1,90 +1,70 @@
-'use client';
-
-import React from 'react';
+// src/components/HomeClient.tsx  (server component)
 import Image from 'next/image';
 import Link from 'next/link';
 import heroImg from '@/assets/hero-fixed.jpg';
-import Footer from '@/components/Footer';
 
-export default function HomeClient() {
+// ...MESSAGES stays the same...
+
+export default function HomeClient({ locale }: { locale: 'es' | 'en' | 'zh' }) {
+  const t = MESSAGES[locale];
+  const featuresHref = locale === 'es' ? '/features' : `/${locale}/features`;
+
   return (
-    <>
-      {/* Main Content Section */}
-      <section
-        id="home"
-        aria-label="Sección principal de introducción a clases de inglés personalizadas"
-        className="relative w-full min-h-screen flex items-center justify-center text-white overflow-hidden"
-        style={{ paddingBottom: '380px' }} // ✅ Push content up to avoid footer overlap
+    <section
+      id="home"
+      aria-label={t.aria}
+      className="relative w-full overflow-hidden"
+      // Use dynamic viewport height so it’s exactly 1 screen tall on all browsers
+      style={{
+        height: '100svh',          // modern viewport unit (fixes desktop/mobile bars)
+        backgroundColor: '#0b1220', // first-paint fallback
+        isolation: 'isolate',
+      }}
+    >
+      {/* Background image fills the section */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={heroImg}
+          alt={t.alt}
+          fill
+          priority
+          quality={90}
+          placeholder="blur"
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/* Dark overlay (inline so it appears before CSS) */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+      />
+
+      {/* Content (no big margins/paddings that change the section height) */}
+      <div
+        className="relative z-20 text-left max-w-3xl px-4 md:px-8"
+        style={{ paddingTop: '10vh', paddingLeft: '1cm' }} // gentle offset only
       >
-        {/* Background image */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src={heroImg}
-            alt="Clases de inglés online personalizadas para profesionales"
-            placeholder="blur"
-            fill
-            quality={90}
-            className="object-cover object-center animate-fade-in"
-          />
-        </div>
+        <h1 className="font-bold mb-4" style={{ fontSize: '3rem', lineHeight: '1.2', color: '#fff' }}>
+          {t.title}
+        </h1>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        <p className="leading-relaxed mb-6" style={{ fontSize: '1.5rem', color: '#c1121f', fontWeight: 'bold' }}>
+          {t.subtitle1}
+          <br />
+          {t.subtitle2}
+        </p>
 
-        {/* Screen reader text */}
-        <span className="sr-only">
-          Aprende inglés online con clases personalizadas para profesionales. Mejora tu conversación,
-          vocabulario técnico y confianza con Harry Ernest.
-        </span>
-
-        {/* Hero Content */}
-        <div
-          className="z-30 text-left animate-fade-in-delay-1"
-          style={{
-            paddingLeft: '1cm',
-            paddingRight: '1rem',
-            marginTop: '3.5cm',
-          }}
+        <Link
+          href={featuresHref}
+          className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
+          style={{ backgroundColor: '#2563eb', color: '#fff', textDecoration: 'none' }}
         >
-          <h1
-            className="font-bold mb-4"
-            style={{
-              fontSize: '3rem',
-              lineHeight: '1.2',
-              color: '#ffffff',
-            }}
-          >
-            Aprende inglés con confianza
-          </h1>
+          {t.cta}
+        </Link>
+      </div>
 
-          <p
-            className="leading-relaxed mb-6"
-            style={{
-              fontSize: '1.5rem',
-              color: '#c1121f',
-              fontWeight: 'bold',
-            }}
-          >
-            Ofrezco cursos personalizados de inglés<br />
-            para profesionales hispanohablantes.
-          </p>
-
-          <Link
-            href="/features"
-            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
-            style={{
-              backgroundColor: '#2563eb',
-              color: 'white',
-              textDecoration: 'none',
-            }}
-          >
-            Más información
-          </Link>
-        </div>
-      </section>
-
-      {/* ✅ Footer placed outside and below the main section */}
-      <Footer />
-    </>
+      <span className="sr-only">{t.sr}</span>
+    </section>
   );
 }

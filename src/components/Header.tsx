@@ -5,24 +5,17 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { AnimatePresence } from 'framer-motion';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-// Framer Motion components
-const MotionDiv = dynamic(() =>
-  import('framer-motion').then((mod) => mod.motion.div),
-  { ssr: false }
-);
-const MotionLi = dynamic(() =>
-  import('framer-motion').then((mod) => mod.motion.li),
-  { ssr: false }
-);
+// Framer Motion components (SSR-safe)
+const MotionDiv = dynamic(() => import('framer-motion').then((m) => m.motion.div), { ssr: false });
+const MotionLi  = dynamic(() => import('framer-motion').then((m) => m.motion.li),  { ssr: false });
 
 const sections = ['home', 'features', 'contact'];
 
 const listVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const itemVariants = {
@@ -30,16 +23,9 @@ const itemVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.3,
-      ease: [0.42, 0, 0.58, 1] as [number, number, number, number], // ✅ This fixes type error
-    },
+    transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] as [number, number, number, number] },
   },
 };
-
-
-
-
 
 export default function Header() {
   const [active, setActive] = useState('home');
@@ -47,77 +33,96 @@ export default function Header() {
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
-        },
-        {
-          rootMargin: '-50% 0px -49% 0px',
-          threshold: 0,
-        }
+      const obs = new IntersectionObserver(
+        ([entry]) => entry.isIntersecting && setActive(id),
+        { rootMargin: '-50% 0px -49% 0px', threshold: 0 }
       );
-
-      observer.observe(el);
-      observers.push(observer);
+      obs.observe(el);
+      observers.push(obs);
     });
-
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  const label = (id: string) =>
+    id === 'home' ? 'Inicio' : id === 'features' ? 'Beneficios' : 'Contacto';
+
   return (
-    <header className="sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md text-white shadow-md">
-      <nav className="sticky top-0 z-50 w-full bg-black bg-opacity-80 backdrop-blur-md text-white shadow-md">
-  <div className="max-w-5xl mx-auto px-4 py-4 flex justify-center items-center">
-    <ul className="flex gap-10 text-base font-medium">
-      {sections.map((id) => (
-        <li key={id}>
-          <Link
-            href={`#${id}`}
-            className={`transition ${
-              active === id
-                ? 'text-blue-400 font-semibold'
-                : 'text-white hover:text-blue-300'
-            }`}
+    <header
+      className="sticky top-0 z-50 shadow-md"
+      style={{
+        background: 'linear-gradient(to right, #bfdbfe, #ffffff, #e5e7eb)',
+        backdropFilter: 'blur(6px)',
+      }}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        {/* Left: Logo / Home */}
+        <Link href="/" className="font-semibold text-gray-800 hover:opacity-80">
+          businessenglish.vip
+        </Link>
+
+        {/* Center: Desktop nav */}
+        <ul className="hidden gap-8 text-sm font-medium md:flex">
+          {sections.map((id) => (
+            <li key={id}>
+              <Link
+                href={`#${id}`}
+                className={`transition ${
+                  active === id
+                    ? 'text-blue-700 font-semibold'
+                    : 'text-gray-800 hover:text-blue-700'
+                }`}
+              >
+                {label(id)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right: Switcher + Hamburger */}
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            aria-label="Abrir menú"
+            className="md:hidden rounded-md p-2 text-gray-800 hover:bg-black/5"
+            onClick={() => setMenuOpen(true)}
           >
-            {id === 'home'
-              ? 'Inicio'
-              : id === 'features'
-              ? 'Beneficios'
-              : 'Contacto'}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-</nav>
+            <Menu size={22} />
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu + Backdrop */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Slide-in Menu */}
+            {/* Slide-in panel */}
             <MotionDiv
               key="mobile-menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-64 bg-black text-white z-50 md:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-72 bg-white text-gray-900 md:hidden"
+              style={{ boxShadow: '-6px 0 20px rgba(0,0,0,0.15)' }}
             >
-              <div className="flex justify-between items-center p-4 border-b border-white/10">
+              <div className="flex items-center justify-between border-b border-gray-200 p-4">
                 <span className="text-lg font-semibold">Menú</span>
-                <button onClick={() => setMenuOpen(false)}>
-                  <X size={24} />
+                <button
+                  type="button"
+                  aria-label="Cerrar menú"
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md p-2 hover:bg-black/5"
+                >
+                  <X size={22} />
                 </button>
               </div>
 
               <MotionDiv
-                className="flex flex-col gap-4 p-6 text-base"
+                className="flex flex-col gap-2 p-4 text-base"
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
@@ -128,17 +133,11 @@ export default function Header() {
                     <Link
                       href={`#${id}`}
                       onClick={() => setMenuOpen(false)}
-                      className={`block py-2 px-2 rounded transition ${
-                        active === id
-                          ? 'bg-blue-600 text-white'
-                          : 'hover:bg-blue-800'
+                      className={`block rounded-md px-3 py-2 transition ${
+                        active === id ? 'bg-blue-600 text-white' : 'hover:bg-blue-50'
                       }`}
                     >
-                      {id === 'home'
-                        ? 'Inicio'
-                        : id === 'features'
-                        ? 'Beneficios'
-                        : 'Contacto'}
+                      {label(id)}
                     </Link>
                   </MotionLi>
                 ))}
@@ -149,11 +148,11 @@ export default function Header() {
             <MotionDiv
               key="backdrop"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
+              animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 bg-black z-40 md:hidden"
+              className="fixed inset-0 z-40 bg-black md:hidden"
             />
           </>
         )}

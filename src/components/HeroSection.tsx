@@ -1,89 +1,22 @@
-'use client';
-
-import React from 'react';
-import Image from 'next/image';
+// src/components/HeroSection.tsx
 import heroImg from '@/assets/hero-fixed.jpg';
-import Link from 'next/link';
 
-interface HeroSectionProps {
-  onImageLoad?: () => void;
-}
-
-export default function HeroSection({ onImageLoad }: HeroSectionProps) {
+export default function HeroSection() {
   return (
-    <header>
-      <section
-        id="home"
-        aria-label="Sección principal de introducción a clases de inglés personalizadas"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden text-white"
-      >
-        {/* Background image */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src={heroImg}
-            alt="Clases de inglés online personalizadas para profesionales hispanohablantes con un profesor experto"
-            placeholder="blur"
-            fill
-            quality={90}
-            className="object-cover object-center animate-fade-in"
-            onLoad={onImageLoad}
-          />
-        </div>
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
-
-        {/* Hidden screen reader text */}
-        <span className="sr-only">
-          Aprende inglés online con clases personalizadas para profesionales. Mejora tu conversación,
-          vocabulario técnico y confianza con Harry Michael Ernest.
-        </span>
-
-        {/* Hero content */}
-        <div
-          className="z-30 text-left animate-fade-in-delay-1"
-          style={{
-            paddingLeft: '1cm',
-            paddingRight: '1rem',
-            marginTop: '3.5cm',
-          }}
-        >
-          <h1
-            className="font-bold mb-4"
-            style={{
-              fontSize: '3rem',
-              lineHeight: '1.2',
-              color: '#ffffff',
-            }}
-          >
-            Aprende inglés con confianza
-          </h1>
-
-          <p
-            className="leading-relaxed mb-6"
-            style={{
-              fontSize: '1.5rem',
-              color: '#c1121f',
-              fontWeight: 'bold',
-            }}
-          >
-            Ofrezco cursos personalizados de inglés<br />
-            para profesionales hispanohablantes.
-          </p>
-
-          <Link
-            href="/features"
-            className="inline-block font-bold py-3 px-6 rounded-xl text-lg transition duration-300 mt-6"
-            style={{
-              backgroundColor: '#2563eb',
-              color: 'white',
-              textDecoration: 'none',
-            }}
-          >
-            Más información
-          </Link>
-        </div>
-      </section>
-    </header>
+    <section
+      aria-hidden="true"
+      style={{
+        position: 'relative',
+        zIndex: 0, // <- ensure it's under the fixed header
+        height: '100svh',
+        width: '100%',
+        overflow: 'hidden',
+        backgroundImage: `linear-gradient(to bottom, rgba(96,165,250,0.45), rgba(255,255,255,0.15), rgba(147,197,253,0.45)), url(${heroImg.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        transition: 'none',
+      }}
+    />
   );
 }

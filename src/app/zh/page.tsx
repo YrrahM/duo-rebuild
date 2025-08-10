@@ -1,10 +1,14 @@
-// src/app/page.tsx  (server component)
+// src/app/zh/page.tsx  (server component)
 import Link from 'next/link';
 import heroImg from '@/assets/hero-fixed.jpg';
 
-export const metadata = { title: 'businessenglish.vip', description: ' ' };
+export const metadata = {
+  title: '个性化英语课程 | businessenglish.vip',
+  description:
+    '为专业人士提供个性化的在线英语课程。提升会话能力、专业词汇与自信。',
+};
 
-export default function HomePage() {
+export default function HomePageZH() {
   return (
     <section
       style={{
@@ -16,7 +20,7 @@ export default function HomePage() {
         isolation: 'isolate',
       }}
     >
-      {/* bg image */}
+      {/* Background image (no animations, server-rendered) */}
       <img
         src={heroImg.src}
         alt=""
@@ -33,7 +37,7 @@ export default function HomePage() {
         }}
       />
 
-      {/* dark overlay */}
+      {/* Overlay */}
       <div
         style={{
           position: 'absolute',
@@ -42,9 +46,9 @@ export default function HomePage() {
         }}
       />
 
-      {/* language switcher (no client code) */}
+      {/* Simple language switcher */}
       <nav
-        aria-label="Language"
+        aria-label="语言"
         style={{
           position: 'absolute',
           top: '16px',
@@ -54,12 +58,12 @@ export default function HomePage() {
           zIndex: 2,
         }}
       >
-        <Link href="/"    prefetch={false} style={{color:'#fff',textDecoration:'none'}}>ES</Link>
-        <Link href="/en"  prefetch={false} style={{color:'#fff',textDecoration:'none'}}>EN</Link>
-        <Link href="/zh"  prefetch={false} style={{color:'#fff',textDecoration:'none'}}>中文</Link>
+        <Link href="/"   prefetch={false} style={{ color: '#fff', textDecoration: 'none' }}>ES</Link>
+        <Link href="/en" prefetch={false} style={{ color: '#fff', textDecoration: 'none' }}>EN</Link>
+        <Link href="/zh" prefetch={false} style={{ color: '#fff', textDecoration: 'none' }}>中文</Link>
       </nav>
 
-      {/* text block */}
+      {/* Content */}
       <div
         style={{
           position: 'relative',
@@ -71,21 +75,29 @@ export default function HomePage() {
           maxWidth: '72ch',
         }}
       >
-        <h3 style={{margin: 0, fontWeight: 600}}>
-          Clases de inglés online personalizadas para profesionales.
+        <h3 style={{ margin: 0, fontWeight: 600 }}>
+          为专业人士提供个性化的在线英语课程。
         </h3>
 
-        <h1 style={{fontSize: '3rem', lineHeight: 1.2, margin: '12px 0 0'}}>
-          Aprende inglés con confianza
+        <h1 style={{ fontSize: '3rem', lineHeight: 1.2, margin: '12px 0 0' }}>
+          自信学英语
         </h1>
 
-        <p style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#c1121f', marginTop: '16px', whiteSpace: 'pre-line'}}>
-          Ofrezco cursos personalizados de inglés
-          {'\n'}para profesionales hispanohablantes.
+        <p
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: '#c1121f',
+            marginTop: '16px',
+            whiteSpace: 'pre-line',
+          }}
+        >
+          为西语母语的专业人士提供
+          {'\n'}个性化英语课程。
         </p>
 
         <Link
-          href="/features"
+          href="/zh/features"
           prefetch={false}
           style={{
             display: 'inline-block',
@@ -98,7 +110,7 @@ export default function HomePage() {
             textDecoration: 'none',
           }}
         >
-          Más información
+          了解更多
         </Link>
       </div>
     </section>

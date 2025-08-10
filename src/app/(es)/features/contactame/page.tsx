@@ -1,11 +1,34 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer';
 import JsonLdBreadcrumbContactame from '@/components/JsonLdBreadcrumbContactame';
 
 export default function ContactamePage() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (res.ok) {
+      router.push(`/features/thank-you?name=${encodeURIComponent(name)}`);
+    } else {
+      alert('No se pudo enviar el mensaje. Intenta más tarde.');
+    }
+  };
+
+
   return (
     <>
       <JsonLdBreadcrumbContactame />
@@ -31,6 +54,7 @@ export default function ContactamePage() {
         </p>
 
         <form
+          onSubmit={handleSubmit}
           style={{
             backgroundColor: '#fff',
             padding: '2rem',
@@ -46,6 +70,9 @@ export default function ContactamePage() {
           <input
             type="text"
             placeholder="Tu nombre"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
             style={{
               padding: '0.75rem',
               borderRadius: '0.5rem',
@@ -54,25 +81,33 @@ export default function ContactamePage() {
             }}
           />
           <input
-            type="email"
-            placeholder="Tu correo electrónico"
-            style={{
-              padding: '0.75rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #ccc',
-              fontSize: '1rem',
-            }}
-          />
+  type="email"
+  placeholder="Tu correo electrónico"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  required
+  style={{
+    padding: '0.75rem',
+    borderRadius: '0.5rem',
+    border: '1px solid #ccc',
+    fontSize: '1rem',
+  }}
+/>
+
           <textarea
-            placeholder="Tu mensaje"
-            rows={5}
-            style={{
-              padding: '0.75rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #ccc',
-              fontSize: '1rem',
-            }}
-          />
+  placeholder="Tu mensaje"
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  required
+  rows={5}
+  style={{
+    padding: '0.75rem',
+    borderRadius: '0.5rem',
+    border: '1px solid #ccc',
+    fontSize: '1rem',
+  }}
+/>
+
 
           <button
             type="submit"
@@ -91,7 +126,6 @@ export default function ContactamePage() {
           </button>
         </form>
 
-        {/* CTA Buttons */}
         <div
           style={{
             marginTop: '2rem',

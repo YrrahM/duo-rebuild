@@ -1,74 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-/* ✅ Tailwind layers */
+/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ Global styles */
-html {
-  scroll-behavior: smooth;
-  margin-right: 0;
-  transition-property: none;
-}
-
-body {
-  background: linear-gradient(to bottom, #60a5fa, #ffffff, #93c5fd); /* Matches HeroSection */
+/* exact same gradient as the hero */
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
 }
-
-/* ✅ Fade-in animation */
-@layer utilities {
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 2.5s ease-out forwards;
-  }
-
-  /* ✅ Staggered fade-in delays using the same animation */
-  .animate-fade-in-delay-1 {
-    animation: fade-in 0.8s ease-out forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-2 {
-    animation: fade-in 0.8s ease-out forwards;
-    animation-delay: 0.4s;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-3 {
-    animation: fade-in 0.8s ease-out forwards;
-    animation-delay: 0.6s;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-4 {
-    animation: fade-in 0.8s ease-out forwards;
-    animation-delay: 0.8s;
-    opacity: 0;
-  }
-}
-
-/* ✅ Keyboard focus outline */
-a:focus {
-  outline: 2px dashed #2563eb;
-  outline-offset: 2px;
-}
-
-/* ✅ Footer override to prevent flash/fade-out */
-footer {
-  opacity: 1 !important;
-  animation: none !important;
-  transition: none !important;
+body {
+  background: linear-gradient(to bottom, #60a5fa, #ffffff, #93c5fd);
 }

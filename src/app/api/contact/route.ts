@@ -1,56 +1,36 @@
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const { name, email, message } = body;
+export async function POST(req: Request) {
+  const { name, email, message } = await req.json();
 
   const transporter = nodemailer.createTransport({
-    host: process.env.ZOHO_HOST || 'smtp.zoho.com',
-    port: Number(process.env.ZOHO_PORT) || 465,
-    secure: true,
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true, // SSL
     auth: {
-      user: process.env.ZOHO_USER,
-      pass: process.env.ZOHO_PASS,
+      user: 'harry@businessenglish.vip',
+      pass: process.env.ZOHO_APP_PASSWORD, // ✅ From .env.local
     },
   });
 
-  const htmlMessage = `
-    <div style="font-family: Arial, sans-serif; padding: 1rem; color: #333;">
-      <div style="text-align: center; margin-bottom: 1rem;">
-        <img src="https://businessenglish.vip/logo.png" alt="Business English Logo" style="max-width: 200px;" />
-      </div>
-
-      <h2 style="color: #2563eb;">📬 Nuevo mensaje de contacto</h2>
-      <p><strong>Nombre:</strong> ${name}</p>
-      <p><strong>Correo:</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Mensaje:</strong></p>
-      <div style="background-color: #f3f4f6; padding: 1rem; border-radius: 8px;">
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      </div>
-
-      <hr style="margin-top: 2rem;" />
-      <p style="font-size: 0.9rem; color: #888; text-align: center;">
-        Este mensaje fue enviado desde el formulario de contacto en 
-        <a href="https://businessenglish.vip" style="color: #2563eb;">businessenglish.vip</a>
-      </p>
-    </div>
-  `;
-
   try {
     await transporter.sendMail({
-      from: `"Business English VIP" <${process.env.ZOHO_USER}>`,
-      to: process.env.ZOHO_USER,
-      replyTo: email,
+      from: 'harry@businessenglish.vip',
+      to: 'harry@businessenglish.vip', // ✅ You receive it
       subject: `Nuevo mensaje de contacto de ${name}`,
-      text: message,
-      html: htmlMessage,
+      html: `
+        <p><strong>Nombre:</strong> ${name}</p>
+        <p><strong>Correo:</strong> ${email}</p>
+        <p><strong>Mensaje:</strong><br/>${message}</p>
+      `,
     });
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
-  } catch (err: any) {
-    console.error('Error sending email:', err);
-    return new Response(
-      JSON.stringify({ success: false, error: err.message }),
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
+    return NextResponse.json(
+      { success: false, error: 'No se pudo enviar el mensaje.' },
       { status: 500 }
     );
   }

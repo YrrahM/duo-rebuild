@@ -1,20 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import Header component without SSR
-const Header = dynamic(() => import('./Header'), { ssr: false });
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function ClientHeader() {
-  const [mounted, setMounted] = useState(false);
-
-  // Wait until the component mounts on the client
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null; // Prevent SSR vs client mismatch
-
-  return <Header />;
+  return (
+    <div className="fixed top-3 right-3 z-[2000]">
+      <div className="rounded-full border border-gray-300/70 bg-white/80 backdrop-blur px-3 py-1 shadow-md">
+        <LanguageSwitcher />
+      </div>
+    </div>
+  );
 }
