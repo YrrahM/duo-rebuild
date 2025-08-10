@@ -1,13 +1,19 @@
-// src/components/HeroSection.tsx
+'use client';
+
+import Image from 'next/image';
 import heroImg from '@/assets/hero-fixed.jpg';
 
-export default function HeroSection() {
+export type HeroSectionProps = {
+  onImageLoad?: () => void;
+};
+
+export default function HeroSection({ onImageLoad }: HeroSectionProps) {
   return (
     <section
       aria-hidden="true"
       style={{
         position: 'relative',
-        zIndex: 0, // <- ensure it's under the fixed header
+        zIndex: 0,
         height: '100svh',
         width: '100%',
         overflow: 'hidden',
@@ -15,8 +21,16 @@ export default function HeroSection() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        transition: 'none',
       }}
-    />
+    >
+      {/* Invisible preloader just to fire onLoad */}
+      <Image
+        src={heroImg}
+        alt=""
+        priority
+        onLoad={onImageLoad}
+        style={{ position: 'absolute', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}
+      />
+    </section>
   );
 }

@@ -1,17 +1,18 @@
 'use client';
 
-import { useState } from 'react';
-import HeroSection from './HeroSection';
-import Footer from './Footer';
-import MainLayout from './MainLayout';
+import { useEffect, useState } from 'react';
+import MainLayout from '@/components/MainLayout';
+import HeroSection from '@/components/HeroSection';
+import Footer from '@/components/Footer';
 
 export default function HomeContent() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []); // show footer after first paint
 
   return (
     <MainLayout>
-      <HeroSection onImageLoad={() => setImageLoaded(true)} />
-      {imageLoaded && <Footer />}
+      <HeroSection />
+      {ready && <Footer />}
     </MainLayout>
   );
 }
